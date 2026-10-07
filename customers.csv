@@ -1,0 +1,16 @@
+customer_id,customer_name,city,state,age,customer_type
+C01,Ananya,Coimbatore,Tamil Nadu,21,Regular
+C02,Priya,Chennai,Tamil Nadu,24,Premium
+C03,Rahul,Bangalore,Karnataka,29,Regular
+C04,Arun,Madurai,Tamil Nadu,31,Regular
+C05,Divya,Salem,Tamil Nadu,26,Premium
+C06,Karthik,Hyderabad,Telangana,34,Regular
+C07,Meena,Coimbatore,Tamil Nadu,22,Premium
+C08,Vishal,Mumbai,Maharashtra,28,Regular
+C09,Sneha,Kochi,Kerala,25,Premium
+C10,Harish,Trichy,Tamil Nadu,30,Regular
+C11,Keerthi,Bangalore,Karnataka,23,Regular
+C12,Sanjay,Chennai,Tamil Nadu,35,Premium
+C13,Swetha,Coimbatore,Tamil Nadu,27,Regular
+C14,Manoj,Madurai,Tamil Nadu,32,Regular
+C15,Lakshmi,Salem,Tamil Nadu,24,Premium

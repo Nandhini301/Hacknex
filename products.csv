@@ -1,0 +1,16 @@
+product_id,product,category,price,stock,supplier
+P01,Laptop,Electronics,50000,25,TechWorld
+P02,Phone,Electronics,20000,40,MobileHub
+P03,Tablet,Electronics,30000,30,TechWorld
+P04,Headphones,Accessories,2000,100,AudioMax
+P05,Keyboard,Accessories,1500,80,ComputerZone
+P06,Mouse,Accessories,800,120,ComputerZone
+P07,Monitor,Electronics,12000,35,DisplayTech
+P08,Printer,Electronics,15000,20,PrintSolutions
+P09,Smartwatch,Wearables,7000,45,WearTech
+P10,PowerBank,Accessories,2500,75,PowerTech
+P11,Webcam,Accessories,3500,50,VisionTech
+P12,Speaker,Audio,5000,60,AudioMax
+P13,Router,Networking,3000,55,NetConnect
+P14,SSD,Storage,6000,40,DataStore
+P15,External Hard Disk,Storage,7500,30,DataStore

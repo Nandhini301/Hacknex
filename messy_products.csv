@@ -1,0 +1,6 @@
+product_id,product,category,price,currency
+P01,Laptop,Electronics,50000,INR
+P02,Phone,Electronics,20000,INR
+P03,Tablet,Electronics,30000,USD
+P04,Headphones,Accessories,2000,INR
+P07,Monitor,Electronics,12000,INR

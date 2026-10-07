@@ -1,1 +1,655 @@
 # Hacknex
+# Proof-Carrying Data Analyst
+
+## HackNex 2026 – HNX26PSI08
+
+### Agentic GenAI Data Analyst
+
+---
+
+## 1. Project Overview
+
+Proof-Carrying Data Analyst is an Agentic GenAI system that answers
+natural-language questions over structured and semi-structured data.
+
+The system is designed to work with multiple data files such as CSV,
+Excel, PDF, and DOCX files.
+
+Instead of directly generating an answer using Generative AI, the system
+generates executable Python code to perform the requested analysis.
+
+The generated code is validated, executed on the uploaded data, and
+verified before the final answer is provided.
+
+If the available data is incomplete, ambiguous, contradictory, or
+unreliable, the system refuses to provide a potentially incorrect answer.
+
+The main objective is to make AI-generated data analysis
+**reproducible, verifiable, and reliable**.
+
+---
+
+# 2. Problem Statement
+
+Real-world datasets often contain problems such as:
+
+- Missing values
+- Duplicate records
+- Different units or currencies
+- Ambiguous dates
+- Contradictory tables
+- Incorrect or inconsistent records
+- Missing relationships between tables
+
+A normal AI system may still produce a confident answer even when the
+data is unreliable.
+
+Our system addresses this problem by checking the data before answering
+and by providing executable Python code as proof for numerical results.
+
+The system follows the principle:
+
+> If a result cannot be reliably determined from the available data,
+> the system should refuse to provide a confident answer.
+
+---
+
+# 3. Key Features
+
+- Natural-language data analysis
+- Multiple CSV file support
+- Excel file support
+- PDF document support
+- DOCX document support
+- Multi-table data analysis
+- Automatic data profiling
+- Missing-value detection
+- Duplicate-record detection
+- Currency and unit mismatch detection
+- Ambiguous-date detection
+- Contradictory-data detection
+- Referential-integrity checking
+- Gemini-based code generation
+- Python code validation
+- Executable proof code
+- Repeated execution for reproducibility
+- Result verification
+- Refusal when the answer cannot be determined reliably
+- Interactive Streamlit interface
+
+---
+
+# 4. System Architecture
+
+The overall workflow of the system is:
+
+```text
+                USER
+                  |
+                  v
+            File Upload
+                  |
+                  v
+         Data Understanding
+                  |
+                  v
+        Data Quality Checker
+                  |
+                  v
+       Question Understanding
+                  |
+                  v
+          Gemini AI Agent
+                  |
+                  v
+       Python Code Generation
+                  |
+                  v
+        Code Validation (AST)
+                  |
+                  v
+          Code Execution
+                  |
+                  v
+            Verification
+                  |
+          +-------+-------+
+          |               |
+          v               v
+      Reliable        Unreliable
+5. Data Pipeline
+
+The data pipeline consists of the following stages:
+
+Step 1 – Data Upload
+
+The user uploads one or more data files.
+
+Supported formats include:
+
+CSV
+XLSX
+PDF
+DOCX
+TXT
+Markdown
+Step 2 – Data Understanding
+
+The system identifies:
+
+File names
+Table names
+Columns
+Data types
+Number of rows
+Possible relationships between tables
+Step 3 – Data Quality Checking
+
+The system checks for potential reliability problems such as:
+
+Missing values
+Duplicate records
+Currency mismatches
+Unit mismatches
+Ambiguous dates
+Contradictory values
+Invalid table relationships
+Step 4 – Question Understanding
+
+The user enters a question in natural language.
+
+For example:
+
+What is the total revenue?
+
+The system determines what type of analysis is required.
+
+Step 5 – Code Generation
+
+Google Gemini generates Python code based on the uploaded data and
+the user's question.
+
+Step 6 – Code Validation
+
+The generated code is checked before execution using Python AST-based
+validation.
+
+Step 7 – Code Execution
+
+The validated Python code is executed against the uploaded dataset.
+
+Step 8 – Verification
+
+The result is checked for consistency by repeated execution and,
+where supported, independent verification.
+
+Step 9 – Final Response
+
+If the result is reliable:
+
+Answer + Executable Proof Code
+
+If the result cannot be determined reliably:
+
+CANNOT DETERMINE RELIABLY
+
+along with the detected reason.
+
+6. Core Model and Reasoning
+
+The core reasoning mechanism of the project combines Generative AI
+with executable Python analysis.
+
+Google Gemini is used to:
+
+Understand the user's natural-language question.
+Understand the available data.
+Generate Python code for the required analysis.
+
+Python and Pandas are then used to perform the actual calculation.
+
+The system does not rely only on the numerical answer generated by AI.
+
+Instead:
+
+Natural Language Question
+          |
+          v
+       Gemini
+          |
+          v
+    Python Code
+          |
+          v
+    Code Validation
+          |
+          v
+    Code Execution
+          |
+          v
+      Result
+          |
+          v
+     Verification
+          |
+          v
+ Final Answer + Proof
+
+This makes the result reproducible.
+
+7. Technologies Used
+Programming Language
+Python
+Application Framework
+Streamlit
+Data Processing
+Pandas
+NumPy
+OpenPyXL
+Document Processing
+PyPDF
+python-docx
+Generative AI
+Google Gemini API
+Google GenAI Python SDK
+Code Validation
+Python Abstract Syntax Tree (AST)
+8. Project Structure
+Hacknex/
+│
+├── app.py
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── customers.csv
+├── products.csv
+├── sales.csv
+│
+├── data/
+│   └── messy/
+│       ├── messy_sales.csv
+│       └── messy_products.csv
+│
+├── screenshots/
+│   ├── normal_result.png
+│   ├── proof_code.png
+│   └── refusal_result.png
+│
+└── .streamlit/
+    └── secrets.toml.example
+9. Installation
+Step 1 – Clone the Repository
+
+Clone the GitHub repository:
+
+git clone https://github.com/Nandhini301/Hacknex.git
+
+Move into the project directory:
+
+cd Hacknex
+Step 2 – Create a Virtual Environment
+
+Create a Python virtual environment:
+
+python -m venv venv
+Windows
+
+Activate the environment:
+
+venv\Scripts\activate
+Linux / macOS
+source venv/bin/activate
+Step 3 – Install Dependencies
+
+Install the required Python libraries:
+
+pip install -r requirements.txt
+
+The main dependencies are:
+
+pandas
+numpy
+streamlit
+openpyxl
+google-genai
+pypdf
+python-docx
+10. Gemini API Configuration
+
+The project uses the Google Gemini API for natural-language
+understanding and Python code generation.
+
+Create the following file:
+
+.streamlit/secrets.toml
+
+Add:
+
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
+
+Replace:
+
+YOUR_GEMINI_API_KEY
+
+with your own Gemini API key.
+
+Security
+
+The actual secrets.toml file must not be uploaded to GitHub.
+
+Only the example configuration file should be included:
+
+.streamlit/secrets.toml.example
+
+Example:
+
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
+11. Running the Application
+
+After installing the dependencies and configuring the Gemini API key,
+run:
+
+streamlit run app.py
+
+The Streamlit application will open in a web browser.
+
+12. Sample Input and Output
+Example 1 – Reliable Data
+Input Files
+customers.csv
+products.csv
+sales.csv
+User Question
+What is the total revenue?
+Processing
+
+The system joins the sales and product tables and calculates:
+
+Revenue = Quantity × Product Price
+Expected Output
+Total Revenue = ₹594,000
+
+The system also provides executable Python proof code.
+
+Example:
+
+merged = sales.merge(
+    products,
+    on="product_id"
+)
+
+merged["revenue"] = (
+    merged["quantity"] *
+    merged["price"]
+)
+
+total = merged["revenue"].sum()
+
+print(total)
+
+The code can be executed again to reproduce the result.
+
+13. Reproducibility
+
+Reproducibility is one of the main features of the system.
+
+After generating the Python code, the system executes it and checks
+whether the result remains consistent when the code is executed again.
+
+Example:
+
+First Execution:
+594000
+
+Second Execution:
+594000
+
+Since both executions produce the same result, the answer is considered
+reproducible.
+
+The numerical result is therefore supported by executable code rather
+than only an AI-generated explanation.
+
+14. Messy Data Example
+
+The system also tests data-quality problems.
+
+Example files:
+
+messy_sales.csv
+messy_products.csv
+
+These files contain problems such as:
+
+Duplicate order records
+Missing quantity
+Mixed currencies
+Ambiguous dates
+User Question
+What is the total revenue?
+Expected Behavior
+
+Instead of producing an unreliable number, the system responds:
+
+CANNOT DETERMINE RELIABLY
+
+The system explains the detected data-quality problems.
+
+This demonstrates that the system can recognize when it does not have
+sufficient reliable information.
+
+15. Contradictory Data Example
+
+The system can also detect conflicting information between tables.
+
+For example, if one product table contains:
+
+Laptop = ₹50,000
+
+and another table contains:
+
+Laptop = ₹60,000
+
+the system identifies the contradiction.
+
+Instead of choosing one value without justification, the system can
+refuse to provide a potentially incorrect result.
+
+16. Evidence and Proof
+
+For numerical answers, the system provides executable Python code.
+
+The evidence flow is:
+
+User Question
+      |
+      v
+Generated Python Code
+      |
+      v
+Code Execution
+      |
+      v
+Execution Result
+      |
+      v
+Verification
+      |
+      v
+Final Answer
+
+This allows another person to inspect and execute the analysis code.
+
+17. Refusal Mechanism
+
+The system follows a conservative approach.
+
+It may refuse to answer when it detects:
+
+Missing required values
+Duplicate records
+Currency conflicts
+Unit mismatches
+Ambiguous dates
+Contradictory tables
+Missing relationships
+Insufficient information
+
+Example:
+
+CANNOT DETERMINE RELIABLY
+
+Reason:
+The uploaded data contains conflicting or incomplete information
+required for the requested calculation.
+
+The purpose of refusal is to avoid producing a confident but incorrect
+answer.
+
+18. Scope
+Minimum Viable Solution
+
+The minimum viable implementation includes:
+
+CSV data analysis
+Multiple-table processing
+Natural-language questions
+Gemini-based code generation
+Python code execution
+Executable proof code
+Repeated execution
+Basic data-quality checking
+Refusal behavior
+Additional Features
+
+The extended implementation includes:
+
+Excel support
+PDF support
+DOCX support
+Duplicate detection
+Missing-value detection
+Currency/unit checking
+Ambiguous-date detection
+Contradiction detection
+Referential-integrity checking
+AST-based code validation
+Independent verification for selected calculations
+Gemini fallback models
+19. Limitations
+
+The current implementation is a prototype designed for demonstration
+and evaluation.
+
+The current execution mechanism uses AST validation and restricted
+execution.
+
+A production deployment would require stronger process or container
+isolation, execution time limits, resource limits, and additional
+security controls.
+
+Independent verification currently supports selected common analytical
+operations rather than every possible type of data-analysis question.
+
+20. Future Scope
+
+Future improvements include:
+
+Stronger secure code execution
+Container-based sandboxing
+Larger datasets
+Advanced statistical analysis
+Automatic data visualization
+More advanced document understanding
+Improved contradiction detection
+More general independent verification
+Advanced multi-agent collaboration
+Better handling of very large datasets
+21. External Resources and APIs
+Generative AI
+
+Google Gemini API is used for:
+
+Natural-language question understanding
+Analysis planning
+Python code generation
+Python Libraries
+
+The project uses:
+
+Pandas
+NumPy
+Streamlit
+OpenPyXL
+Google GenAI SDK
+PyPDF
+python-docx
+Demonstration Data
+
+The demonstration datasets are project-created datasets designed to
+demonstrate multi-table analysis, reproducibility, and data-quality
+trap detection.
+
+22. How to Reproduce the Demonstrated Result
+
+To reproduce the main demonstration:
+
+Step 1
+
+Clone the repository:
+
+git clone https://github.com/Nandhini301/Hacknex.git
+Step 2
+
+Install the dependencies:
+
+pip install -r requirements.txt
+Step 3
+
+Configure the Gemini API key:
+
+.streamlit/secrets.toml
+Step 4
+
+Run the application:
+
+streamlit run app.py
+Step 5
+
+Use the demonstration data:
+
+customers.csv
+products.csv
+sales.csv
+Step 6
+
+Ask:
+
+What is the total revenue?
+Step 7
+
+The expected result is:
+
+₹594,000
+
+The generated proof code can then be executed again to verify the
+same result.
+
+23. Conclusion
+
+Proof-Carrying Data Analyst combines Agentic Generative AI with
+executable Python-based verification.
+
+The main goal is not only to answer data-analysis questions, but to
+provide a reproducible proof for the answer and recognize situations
+where a reliable answer cannot be determined.
+
+The system therefore follows three important principles:
+
+Generate executable analysis.
+Verify the computed result.
+Refuse unreliable answers.
+          |               |
+          v               v
+   Answer + Proof       Refusal
